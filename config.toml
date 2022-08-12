@@ -1,0 +1,23 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-gb'
+title = 'Dilan Goodwin'
+theme = "m10c"
+
+[params]
+	author = 'Dilan Goodwin'
+	description = 'University student within the UK studying Computer Science with an interest in Cyber Security.'
+	avatar = ''
+	menu_item_separator = ' - '
+	# favicon = ''
+
+	[[params.social]]
+		icon = 'github'
+		name = 'GitHub'
+		url = 'https://github.com/DilanGoodwin'
+
+[menu]
+	[[menu.main]]
+		identifier = 'home'
+		name = 'Home'
+		url = '/'
+		weight = 1
