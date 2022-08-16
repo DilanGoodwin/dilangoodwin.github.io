@@ -21,3 +21,12 @@ theme = "m10c"
 		name = 'Home'
 		url = '/'
 		weight = 1
+	[[menu.main]]
+		identifier = 'writeups'
+		name = 'WriteUps'
+		url = '/writeups'
+		weight = 3
+
+[taxonomies]
+	tag = 'tags'
+	
