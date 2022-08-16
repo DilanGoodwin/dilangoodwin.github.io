@@ -26,7 +26,3 @@ theme = "m10c"
 		name = 'WriteUps'
 		url = '/writeups'
 		weight = 3
-
-[taxonomies]
-	tag = 'tags'
-	
