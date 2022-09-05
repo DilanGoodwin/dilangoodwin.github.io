@@ -1,14 +1,14 @@
 ---
 title: "TryHackMe Kenobi WriteUp"
 url: /WriteUps/TryHackMe/Kenobi
-date: 2022-08-12T10:41:26+01:00
+date: 2022-09-03
 draft: false
-tags: ['TryHackMe','WriteUp','Nmap','SMB','PrivillegeEscalation']
+tags: ['TryHackMe','WriteUp','Nmap','SMB','PrivillegeEscalation','Exploit-DB']
 icon: '/images/coverimages/Kenobi.png'
-description: 'TryHackMe'
+description: 'Walkthrough on exploiting a Linux machine. Enumerate Samba for shares, manipulate a vulnerable version of proftpd and escalate your privileges with path variable manipulation.'
 ---
 
-![Cover Image](/images/coverimages/Kenobi.png "TryHackMe Kenobi Room")
+![Cover Image](/images/coverimages/Kenobi.png "TryHackMe Room Kenobi")
 
 # TryHackMe Kenobi WriteUp
 
@@ -105,7 +105,7 @@ description: 'TryHackMe'
  Nmap done: 1 IP address (1 host up) scanned in 13.55 seconds
  ```
 
- Answer Task 1 Question 2: 7
+Answer Task 1 Question 2: 7
 
 ## Task 2
  At the beginning of this task it talks about Samba shares and also gives you a command `nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse MACHINE_IP`.
