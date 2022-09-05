@@ -9,6 +9,7 @@ description: 'Walkthrough on exploiting a Linux machine. Enumerate Samba for sha
 ---
 
 ![Cover Image](/images/coverimages/Kenobi.png "TryHackMe Room Kenobi")
+[Room Link: Kenobi](https://tryhackme.com/room/kenobi "TryHackMe Room: Kenobi")
 
 # TryHackMe Kenobi WriteUp
 
@@ -105,8 +106,6 @@ description: 'Walkthrough on exploiting a Linux machine. Enumerate Samba for sha
  Nmap done: 1 IP address (1 host up) scanned in 13.55 seconds
  ```
 
-Answer Task 1 Question 2: 7
-
 ## Task 2
  At the beginning of this task it talks about Samba shares and also gives you a command `nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse MACHINE_IP`.
 
@@ -161,8 +160,6 @@ Answer Task 1 Question 2: 7
  Nmap done: 1 IP address (1 host up) scanned in 4.41 seconds
  ```
 
- Answer Task 2 Question 1: 3
-
 ### Question 2
  Once you're connected, list the files on the share. What is the file you can see?
 
@@ -171,8 +168,6 @@ Answer Task 1 Question 2: 7
  Out of the 3 shares that the scan found there is one called `anonymous` which we can try to connect to using the command `smbclient`.
 
  Full command to connect is `smbclient //10.10.188.52/anonymous` without specifying a password. Once connected I ran the `ls` command and saw a single file called `log.txt`.
-
- Answer Task 2 Question 2: log.txt
 
 ### Question 3
  What port is FTP running on?
@@ -184,8 +179,6 @@ Answer Task 1 Question 2: 7
  The command downloads the file to whatever directory you are currently in, so to make sure I did not lose track of `log.txt` I moved it to the `kenobi` directory using the command `mv log.txt Documents/TryHackMe/Kenobi/`. 
 
  For this question though I did not look at the log file as the standard port for FTP is port 21. I could also have looked at the Nmap scan I ran earlier where it also tells us which port FTP is running on.
-
- Answer Task 2 Question 3: 21
 
  If you take a look in the log file it does say that FTP is running on port 21.
 
@@ -214,8 +207,6 @@ Answer Task 1 Question 2: 7
  Nmap done: 1 IP address (1 host up) scanned in 0.45 seconds
  ```
 
- Answer Task 2 Question 4: /var
-
 ## Task 3
 
 ### Question 1
@@ -224,8 +215,6 @@ Answer Task 1 Question 2: 7
  This questions asks us to use [NetCat](https://www.kali.org/tools/netcat/) to connect to the machine using the FTP port (port 21). I am not very familiar with NetCat so did a quick Google on how to use it thinking that I need to add in arguments for the port, IP and a given service that I am trying to connect to but no. For NetCat to connect simply use the command `nc 10.10.188.52 21` (replace `10.10.188.52` with the IP address specific to the machine you are trying to access.) 
 
  ![NetCat connect FTP `nc 10.10.188.52 21`](/images/tryhackme/kenobi/07NetCat.png)
-
- Answer Task 3 Question 1: 1.3.5
 
 ### Question 2
  How many exploits are there for the ProFTPD running?
@@ -250,8 +239,6 @@ Answer Task 1 Question 2: 7
  ---------------------------------------------------------------------- ---------------------------------
  Shellcodes: No Results
  ```
-
- Answer Task 3 Question 2: 4
 
 ### Question 3 - No Answer Required
  This question talk about the `mod_copy` exploit listed in the `SearchSploit-ProFTPD.txt` results. Any unauthenticated client can use the commands to copy files from any part of the system to a chosen destination.
@@ -289,8 +276,6 @@ Answer Task 1 Question 2: 7
 
  `cat user.txt`
 
- Answer Task 3 Question 5: d0b0f3f53b6caa532a83915e19224899
-
  ![User.txt](/images/tryhackme/kenobi/13UserTXT.png)
 
 ## Task 4
@@ -305,8 +290,6 @@ Answer Task 1 Question 2: 7
 
  ![SUID listed commands](/images/tryhackme/kenobi/14SUID.png)
 
- Answer Task 4 Question 1: /usr/bin/menu
-
  Honestly I had to look up SUID to fully understand what the command was doing and I am still not 100% sure my explaination is correct. [Linux permissions: SUID, SGID, and sticky bit](https://www.redhat.com/sysadmin/suid-sgid-sticky-bit)
 
 ### Question 2
@@ -315,8 +298,6 @@ Answer Task 1 Question 2: 7
  Running the command is as simple as entering its path into the terminal `/usr/bin/menu`
 
  ![Running `/usr/bin/menu`](/images/tryhackme/kenobi/15MenuCommand.png)
-
- Answer Task 4 Question 2: 3
 
 ### Question 3 - No Answer Required
  Using `/usr/bin/menu` we are going to gain a root shell. All the commands for this are written within the task but I am going to reiterate them here just incase.
@@ -331,8 +312,6 @@ Answer Task 1 Question 2: 7
  ![Gaining Root shell](/images/tryhackme/kenobi/16RootShell.png)
 
  Select option 1. Now you have a root shell. From here you can navigate to `/root/` and print out `root.txt`
-
- Answer Task 4 Question 4: 177b3cd8562289f37382721c28381f02
 
  ![Root.txt](/images/tryhackme/kenobi/17RootTXT.png)
 
