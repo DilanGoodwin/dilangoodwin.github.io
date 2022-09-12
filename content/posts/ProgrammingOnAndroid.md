@@ -4,7 +4,7 @@ url: /Posts/ProgrammingAndroid
 date: 2022-09-10
 draft: false
 tags: ['Samsung','F-Droid','Termux','Syncthing','Programming','Markor','Editor']
-icon: '/images/coverimages/ProgrammingOnAndroid.png'
+icon: '/images/posts/coverimages/ProgrammingOnAndroid.png'
 description: 'A dream of mine is only needing a single computing device to complete all of my tasks so I set out to see if I could program on my phone when out and about. It worked out and this is a short post about how to achieve the same thing.'
 ---
 
