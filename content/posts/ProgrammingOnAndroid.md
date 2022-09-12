@@ -13,7 +13,7 @@ Android is an "Open Source" operating system for mobile devices. My reasoning fo
 
 Having a computing device in your pocket at all times raises the questions as to whether you could program on Android and completely ditch the desktop. While you can technically program on Android unfortunately it is not yet at the stage where you can get rid of your desktop computer but for quick fire programs it is not actually that bad. For nearly a year I have been using 5 different apps on my phone to write documentation and small programs without the need for a desktop computer. 
 
-![Termux Updating Repositories](/images/posts/programmingandroid/01TermuxUpdating.png "Termux Updating repositories List Using `pkg upgrade` Command")
+![Termux Updating Repositories](/images/programmingandroid/01TermuxUpdating.png "Termux Updating repositories List Using `pkg upgrade` Command")
 
 Is it optimised for it? No. 
 Is it fast? No. 
@@ -26,17 +26,17 @@ This small blog post is going to go through how I set my Android device up for p
 
 A lot of Android devices have some scary warnings when you try to install files that are not from officail sources (or just not from pre-installed app stores), Samsung is a good example of this. To install an apk file onto your Samsung device you have to allow the specific app you are using to install apk files which is hidden within the settings of your device, and then a warning pops up which of course has to mention that what you are installing could be potential malware. 
 
-![Samsung APK Installation Warning](/images/posts/programmingandroid/02SamsungInstallation.png "Samsung Warning When Installing APK Files From Internet")
+![Samsung APK Installation Warning](/images/programmingandroid/02SamsungInstallation.png "Samsung Warning When Installing APK Files From Internet")
 
 General rule of thumb when installing things onto your mobile device (or any device for that matter) is make sure you known what it is that you are installing, if it comes from the official source and not some third party site then you should have nothing to worry about but it doesn't hurt to double check.
 
 Now the apps that I want to install are located on the F-Droid store so I will install that app store onto my device and update its repositories.
 
-![F-Droid Store Updating Repositories](/images/posts/programmingandroid/03FDroidUpdating.png "F-Droid Refreshing Repositories List & Allowing Other Repository Lists")
+![F-Droid Store Updating Repositories](/images/programmingandroid/03FDroidUpdating.png "F-Droid Refreshing Repositories List & Allowing Other Repository Lists")
 
 Once F-Droid has updated all of its repositories you can download any apps you want. Every time that I install F-Droid onto a new device I also go into its settings and enable the other repositories that are not turned on by default, it is also here that you can add your own repositories to F-Droid if you would like to.
 
-![F-Droid Third Party Repository Settings](/images/posts/programmingandroid/04FDroidRepositorySettings.png "F-Droid Third Party Repository Settings")
+![F-Droid Third Party Repository Settings](/images/programmingandroid/04FDroidRepositorySettings.png "F-Droid Third Party Repository Settings")
 
 Within F-Droid I normally get 3 apps: [Termux](https://termux.dev/en/), [Markor](https://github.com/gsantner/markor) & [Syncthing](https://syncthing.net/). Markor is the least interesting of the 3 and for myself has mostly been replaced by an app called [Editor](https://github.com/billthefarmer/editor). While the GitHub page for Editor says that it is available on F-Droid I was unable to find it and instead just downloaded it from GitHub.
 
