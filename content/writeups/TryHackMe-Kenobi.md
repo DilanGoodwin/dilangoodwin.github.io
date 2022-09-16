@@ -12,8 +12,7 @@ description: 'Walkthrough on exploiting a Linux machine. Enumerate Samba for sha
 [Room Link: Kenobi](https://tryhackme.com/room/kenobi "TryHackMe Room: Kenobi")
 
 # TryHackMe Kenobi WriteUp
-
- This is a write up of the Kenobi room in TryHackMe. It is a walk through on exploiting a Linux machine using:
+ This is a write up of the Kenobi room on TryHackMe. It is a walk through on exploiting a Linux machine using:
  * [Samba](https://www.samba.org) shares
  * Manipulate vulnerable version proftpd
  * Escalating privilleges path variable manipulation
