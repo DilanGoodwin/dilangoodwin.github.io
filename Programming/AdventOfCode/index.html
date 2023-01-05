@@ -1,0 +1,85 @@
+<!doctype html><html lang=en-gb><head><title>AdventOfCode Day01 Calorie Counting // Dilan Goodwin</title><link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.109.0"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Dilan Goodwin"><meta name=description content="My write up of Day 01 of the AdventOfCode challenge that took place from 1st December 2022 to 25th December 2022."><link rel=stylesheet href=https://blog.dilanjgoodwin.uk/css/main.min.0fb49e70a30412f97ddfc418e18fefef1d9fcdebe45f634dbbba768b00fe1eec.css><meta name=twitter:card content="summary"><meta name=twitter:title content="AdventOfCode Day01 Calorie Counting"><meta name=twitter:description content="My write up of Day 01 of the AdventOfCode challenge that took place from 1st December 2022 to 25th December 2022."><meta property="og:title" content="AdventOfCode Day01 Calorie Counting"><meta property="og:description" content="My write up of Day 01 of the AdventOfCode challenge that took place from 1st December 2022 to 25th December 2022."><meta property="og:type" content="article"><meta property="og:url" content="https://blog.dilanjgoodwin.uk/Programming/AdventOfCode/"><meta property="article:section" content="programming"><meta property="article:published_time" content="2022-12-25T00:00:00+00:00"><meta property="article:modified_time" content="2022-12-25T00:00:00+00:00"></head><body><header class=app-header><a href=https://blog.dilanjgoodwin.uk><img class=app-header-avatar src=/avatar.jpg alt="Dilan Goodwin"></a>
+<span class=app-header-title>Dilan Goodwin</span><nav class=app-header-menu><a class=app-header-menu-item href=/>Home</a>
+-
+<a class=app-header-menu-item href=/posts>Blog</a>
+-
+<a class=app-header-menu-item href=/writeups>WriteUps</a>
+-
+<a class=app-header-menu-item href=/programming>Programming</a></nav><p>University student within the UK studying Computer Science with an interest in Cyber Security.</p><div class=app-header-social><a href=https://github.com/DilanGoodwin target=_blank rel="noreferrer noopener me"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>GitHub</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a><a href=https://www.linkedin.com/in/dilan-goodwin-1b5864224 target=_blank rel="noreferrer noopener me"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-linkedin"><title>LinkedIn</title><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div></header><main class=app-container><article class=post><header class=post-header><h1 class=post-title>AdventOfCode Day01 Calorie Counting</h1><div class=post-meta><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Dec 25, 2022</div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min read</div><div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><a class=tag href=https://blog.dilanjgoodwin.uk/tags/adventofcode/>AdventOfCode</a>
+<a class=tag href=https://blog.dilanjgoodwin.uk/tags/programming/>Programming</a>
+<a class=tag href=https://blog.dilanjgoodwin.uk/tags/java/>Java</a></div></div></header><div class=post-content><p><img src=/images/coverimages/AdventOfCode.png alt="Cover Image">
+<a href=https://adventofcode.com/2022/day/1>Room Link: AdventOfCode Day01</a></p><h1 id=what-is-adventofcode>What is AdventOfCode</h1><p>AdventOfCode is a programming challenge that takes place during December. In total it is the 25 days leading up to Christmas. Each challenge gives you a small brief to look over to help you understand the problem at hand, then you are also given some input data to use within the program you create to get the answer to the problem.</p><p>I have found that it often centers around sorting/parsing data so that you only get the bits that you need and then doing some simple calculations within the program. The language that you use to complete the challenge is completely up to you. I have decided to use the Java programming language as it is what I am currently using at university and is a language that it never hurts to get more practice in. This challenge can be a good way to throw yourself straight into the deepend to learn a new programming language but I would recommend using one that you know fairly well.</p><p>Something else that I am going to point out is that you do not have to complete this over the 25 days that the challenge is going on for. Currently I have not done all of the different days for 2022 as university work too precidence but I am planning to go over them where I can to complete the challenge. Another thing to keep in mind is that everyones approaches to these programming challenges will be different and often the solutions that you come up with will be different so do not worry about having a different solution to someone else.</p><h1 id=day-01-calorie-counting---part-1>Day 01: Calorie Counting - Part 1</h1><p>First day for the challenge lets see what is has instore. For all of these different days the brief that is going to be written below will be taken directly from the challenge website (linked above).</p><h2 id=the-brief>The Brief</h2><p>Santa&rsquo;s reindeer typcially eat regular reindeer food, but they need a lot of magical energy to deliver presents on Christmas. For that, their favourite snack is a special type of star fruit that only grows deep in the jungle. The Elves have brought you on their annual expedition to the grove where the fruit grows.<br>To supply enough magical energy, the expedition needs to retrieve a minimum of fifty stars by December 25th. Although the Elves assure you that the grove has plenty of fruit, you decide to grab any fruit that you see along the way, just in case.<br>Collect stars by solving puzzules. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants you a star. Good luck!</p><p>The jungle must be too overgrown and difficult to navigate in vehicles or access from the air; the Elves&rsquo; expedition traditionally goes on foot. As your boats approach land, the Elves begin taking inventory of their supplies. One important consideration is food - in particular, the number of Calories each Elf is carrying (your puzzle input).<br>The Elves take turns writing down the number of Calories contained by the various meals, snacks, rations, etc. that they&rsquo;ve brought with them, one item per line. Each Elf separates their own inventory from the previous Elf&rsquo;s inventory (if any) by a blank line.<br>For example, suppose the Elves finish writing their items&rsquo; Calories and end up with the following list:</p><pre tabindex=0><code>1000
+2000
+3000
+
+4000
+
+5000
+6000
+
+7000
+8000
+9000
+
+10000
+</code></pre><p>This list represents the Calories of the food carried by five Elves:</p><ul><li>The first Elf is carrying food with <code>1000</code>, <code>2000</code>, and <code>3000</code> Calories, a total of <code>6000</code> Calories.</li><li>The second Elf is carrying one food item with <code>4000</code> Calories.</li><li>The third Elf is carrying food with <code>5000</code> and <code>6000</code> Calories, a total of <code>11000</code> Calories.</li><li>The fourth Elf is carrying food with <code>7000</code>, <code>8000</code>, and <code>9000</code> Calories, a total of <code>24000</code> Calories.</li><li>The fifth Elf is carrying one food item with <code>10000</code> Calories.</li></ul><p>In case the Elves get hungry and need extra snacks, they need to know which Elf to ask: they&rsquo;d like to know how many Calories are being carried by the Elf carrying the most Calories. In the example above, this is <code>24000</code> (carried by the fourth Elf).<br>Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?</p><h2 id=creating-a-solution>Creating a Solution</h2><p>Frist thing I did was create a new Java program called <code>CalorieCounting.java</code> and then thought of how best to break the program up into different sections. Now I am not a big fan of writing everything as one giant program, what I will do instead is break a program into smaller sections that you can then program individually. Doing it this way also means that I can check each section individually making it easier to find errors within the code.</p><p>I decided on having three different functions called: <code>importFile</code>, <code>parseFile</code>, <code>largestCalorieAmount</code>.</p><h3 id=importfile><code>importFile</code></h3><p>This section is quite self explainary, all I wanted it to do was import the file. Using a scanner that imported into an ArrayList of Strings means that it was quite easy to go through the provided input set adding everything into the program. When it comes to importing the puzzle inpuit into the program I wanted to try and make it so you do not have to edit anything within the provided file so that you could esentially point my program in the direction of your file and it would calculate the answer to the problem.</p><p>Below is the function in its entirety:</p><pre tabindex=0><code>public static ArrayList&lt;String&gt; importFile(String fileLocation) throws FileNotFoundException{
+    ArrayList&lt;String&gt; fileContents=new ArrayList&lt;&gt;();
+    Scanner readFile=new Scanner(new File(fileLocation));
+
+    while(readFile.hasNextLine()){
+        fileContents.add(readFile.nextLine());
+    }
+
+    readFile.close();
+    return fileContents;
+}
+</code></pre><h3 id=parsefile><code>parseFile</code></h3><p>The provided input file includes spaces/gaps between each of the different elf calorie sections. This can be used to our advantage when calculating the total calorie amount that the elf is carrying, as we can go through the ArrayList of all the imported data and add all the values that come before an empty cell within the ArrayList together. Then once they have all been added together they can be added to another ArrayList that store the total number of calories each elf is carrying.</p><p>Below is the function in its entirety:</p><pre tabindex=0><code>public static ArrayList&lt;Integer&gt; parseFile(ArrayList&lt;String&gt; values){
+    ArrayList&lt;Integer&gt; totalElfCalories=new ArrayList&lt;&gt;();
+    int totalCalories=0;
+
+    for(int i=0;i&lt;values.size();i++){
+        if(values.get(i)!=&#34;&#34;){
+            totalCalories+=Integer.parseInt(values.get(i));
+        }else if(values.get(i)==&#34;&#34;){
+            totalElfCalories.add(totalCalories);
+            totalCalories=0;
+        }
+    }
+
+    return totalElfCalories;
+}
+</code></pre><p>One thing you will notice is that in each case the Integer had to be parsed, this is because I was treating the Strings stored within the ArrayList as Integers when adding them together and trying to store them within the Integer ArrayList.</p><h3 id=largestcalorieamount><code>largestCalorieAmount</code></h3><p>This function is a simple for loop that is looking for the largest calculated calorie value within the Integer ArrayList.</p><p>Below is the function in its entirety:</p><pre tabindex=0><code>public static int largestCalorieAmount(ArrayList&lt;Integer&gt; values){
+    int largestCalorie=0;
+
+    for(int i=0;i&lt;values.size();i++){
+        if(largestCalorie&lt;values.get(i)){
+            largestCalorie=values.get(i);
+        }
+    }
+
+    return largestCalorie;
+}
+</code></pre><h2 id=my-answer>My Answer</h2><p>The answer that I calculated to the question was <code>68787</code>.</p><h1 id=day-01-calorie-counting---part-2>Day 01: Calorie Counting - Part 2</h1><h2 id=the-brief-1>The Brief</h2><p>By the time you calculate the answer to the Elves&rsquo; question, they&rsquo;ve already realized that the Elf carrying the most Calories of food might eventually run out of snacks.
+To avoid this unacceptable situation, the Elves would instead like to know the total Calories carried by the top three Elves carrying the most Calories. That way, even if one of those Elves runs out of snacks, they still have two backups.
+In the example above, the top three Elves are the fourth Elf (with 24000 Calories), then the third Elf (with <code>11000</code> Calories), then the fifth Elf (with <code>10000</code> Calories). The sum of the Calories carried by these three elves is <code>45000</code>.
+Find the top three Elves carrying the most Calories. How many Calories are those Elves carrying in total?</p><h2 id=creating-a-solution-1>Creating a Solution</h2><p>Looking at the brief there doesn&rsquo;t seem to be a lot that we need to change within our functions. The only one that I am going to mess within is <code>largestCalorieAmount</code> and change it to <code>top3CalorieAmount</code> as we now need it to calculate the total of the top 3 calories.</p><h3 id=top3calorieamount><code>top3CalorieAmount</code></h3><p>What the new function needs to do is iterate through the provided ArrayList 3 times, each time removing the largest integer value and adding it to a variable for storage. The added value then needs to be removed from the ArrayList so we do not get the same value multiple times ruining our answer.<br>When looking at the code you will see that I have taken the old function and just added a few small pieces around it to now calculate the new answer to the question.</p><p>Below is the function in its entirety:</p><pre tabindex=0><code>public static int largestCalorieAmount(ArrayList&lt;Integer&gt; values){
+    int largestCalorie=0;
+
+    for(int j=0;j&lt;3;j++){
+        int caloriePosition=0;
+        int currentLargestCalorie=0;
+
+        for(int i=0;i&lt;values.size();i++){
+            if(currentLargestCalorie&lt;values.get(i)){
+                currentLargestCalorie=values.get(i);
+                caloriePosition=i;
+            }
+        }
+
+        values.remove(caloriePosition);
+        largestCalorie+=currentLargestCalorie;
+    }
+
+    return largestCalorie;
+}
+</code></pre><h2 id=my-answer-1>My Answer</h2><p>The answer that I calculated to the question was: <code>198041</code></p><h1 id=conclusion>Conclusion</h1><p>This was a fun challenge, it was difficult at first working out how to import files into Java programs as it is not something that I really have to do every day but, now that it is something I know it can be used over and over again. It is also nice to do something different with the programming languages that I know.<br>If you have not tried it yourself then I really do recommend it, for beginners it can be quite hard but if you take your time and approach it one step at a time then I am sure you can do it. For those who are more advanced try imposing your own rules on the challenge, you do not have to leave the file plain but that is a challenge that I have imposed on myself so that others can use their own puzzle input within my program.</p><p>You can find my program on my GitHub, linked on the side.</p></div><div class=post-footer></div></article></main></body></html>
