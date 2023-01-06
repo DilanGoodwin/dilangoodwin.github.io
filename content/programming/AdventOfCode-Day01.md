@@ -1,5 +1,5 @@
 ---
-title: "AdventOfCode Day01 Calorie Counting"
+title: "AdventOfCode Day01 - Calorie Counting"
 url: /Programming/AdventOfCode
 date: 2022-12-25
 draft: false
@@ -8,6 +8,7 @@ description: 'My write up of Day 01 of the AdventOfCode challenge that took plac
 ---
 
 ![Cover Image](/images/coverimages/AdventOfCode.png)
+
 [Room Link: AdventOfCode Day01](https://adventofcode.com/2022/day/1)
 
 # What is AdventOfCode
