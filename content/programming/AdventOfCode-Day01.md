@@ -1,5 +1,5 @@
 ---
-title: "AdventOfCode Day01 - Calorie Counting"
+title: "AdventOfCode 2022 Day01 - Calorie Counting"
 url: /Programming/AdventOfCode
 date: 2022-12-25
 draft: false

@@ -1,5 +1,5 @@
 ---
-title: "AdventOfCode Day02 - Rock Paper Scissors"
+title: "AdventOfCode 2022 Day02 - Rock Paper Scissors"
 url: /Programming/AdventOfCode
 date: 2023-01-01
 draft: false
