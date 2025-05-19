@@ -17,7 +17,7 @@ async function displayGallery(folderPath, containerId) {
     try {
         const imageUrls = await fetchImagesFromFolder(folderPath);
         const container = document.getElementById(containerId);
-        container.innerHTML = '<-- Something -->';
+        container.innerHTML = '';
         imageUrls.forEach(url => {
             const wrapper = document.createElement('div');
             wrapper.className = 'col-sm-6 col-md-4 mb-4';
