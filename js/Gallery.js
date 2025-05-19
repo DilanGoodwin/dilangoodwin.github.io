@@ -11,20 +11,26 @@ async function fetchImagesFromFolder(folderPath) {
     return images.map(img => `${folderPath}/${img}`);
 }
 
+// Generate the image tiles and add them to the container
+// Each image is within its own div allowing for Masonry to lay them out as necessary
 async function displayGallery(folderPath, containerId) {
     try {
         const imageUrls = await fetchImagesFromFolder(folderPath);
         const container = document.getElementById(containerId);
-        container.innerHTML = '';
+        container.innerHTML = '<-- Something -->';
         imageUrls.forEach(url => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'col-sm-6 col-md-4 mb-4';
             const img = document.createElement('img');
             img.src = url;
-            img.style.maxWidth = '600px';
-            // img.style.margin = '5px';
-            container.appendChild(img);
+            img.className='img-fluid rounded shadow-sm';
+            wrapper.appendChild(img);
+            container.appendChild(wrapper);
         });
-    } catch (err) {
-        console.error(err);
+    } catch (err){
+        // If there is an error don't bother doing anything as we are likely running on a users machine
+        // For development add log lines here for errors
+        // console.log(err)
     }
 }
 
