@@ -1,0 +1,24 @@
+name: Generate Image JSON List
+
+on:
+    schedule:
+        - cron: '0 0 1 1 *'
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Run Generator Script
+              run: python3 ./.github/scripts/imgListGenerator.py
+
+            - name: Setup Push Info
+              run: |
+                git config --global user.name "${{github.actor}}"
+                git config --global user.email "${{github.actor}}@users.noreply.github.com"
+
+                git add .
+                git commit -m "GalleryList.json Auto-Generate"
+                git push
