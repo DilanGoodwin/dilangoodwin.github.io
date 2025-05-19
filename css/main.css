@@ -1,0 +1,777 @@
+/* ========================================================================== 
+ ---- Contents ----
+0. Fonts and Other Imports
+1. Global Styles
+2. Header & Navbar
+3. Splash Widgets (Main Screen)
+4. Footer
+5. Hero Area
+6. P2P section
+7. About us section
+8. Committee Section Style
+9. Facilities Section Style
+10. Gallery Section Styles
+11. Sidebar
+12. Responsive Tweaks
+========================================================================== */
+
+/* ==========================================================================
+ 0. Fonts and Other Imports
+========================================================================== */
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,700");
+
+:root {
+  --bg: #FFFFFC;
+  --interface: #2B3D41;
+  --primary-text: #FFFFFC;
+  --accent: #CD4631;
+  --secondary-text: #333;
+}
+
+/* ==========================================================================
+1. Global Styles
+========================================================================== */
+section,
+header#hero-area,
+#P2P,
+#about-us,
+#facilities,
+#committee,
+#other {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  scroll-margin-top: 6rem;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg);
+  color: var(--secondary-text);
+}
+
+.section-header {
+  color: var(--secondary-text);
+  margin-top: 0 !important;
+  margin-bottom: 2rem !important;
+  text-align: center;
+}
+.section-title {
+  font-size: 2rem;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 0;
+}
+.section-subtitle {
+  color: var(--secondary-text);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.section-header .lines {
+  margin: 16px auto;
+  width: 70px;
+  border-top: 2px solid var(--interface);
+}
+
+section > .container,
+#other > .container {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--secondary-text);
+  background: var(--bg);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+a {
+  transition: all 0.2s linear;
+  color: inherit;
+  text-decoration: none;
+}
+a:hover, a:focus {
+  color: #969696;
+  text-decoration: none;
+  outline: none;
+}
+
+.section-divider {
+  border: none;
+  border-top: 2px solid var(--secondary-text);
+  margin: 0 auto 3rem auto;
+  width: 80%;
+  opacity: 1;
+}
+
+.main-content > .container:first-of-type {
+  margin-top: 70px;
+}
+
+.main-content {
+  margin-left: 110px;
+}
+
+/* ========================================================================== 
+2.Navbar
+========================================================================== */
+
+.universal-navbar {
+  background-color: var(--interface) !important;
+  color: var(--primary-text) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  min-height: 70px;
+}
+
+.universal-navbar .container {
+  justify-content: flex-end !important;
+}
+
+.universal-navbar .navbar-nav {
+  width: auto;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.universal-navbar .nav-item {
+  text-align: center;
+}
+
+.universal-navbar .nav-link {
+  color: var(--primary-text) !important;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: color 0.2s;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+}
+
+.universal-navbar .nav-link.active,
+.universal-navbar .nav-link:focus,
+.universal-navbar .nav-link:hover {
+  color: var(--accent) !important;
+}
+/* ========================================================================== 
+3. Splash Widgets #hero-area
+========================================================================== */
+
+.splash-widgets-3col {
+  display: flex;
+  gap: 48px;
+  max-width: 2500px;
+  margin: 48px auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-widgets-leftcol {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 0 0 340px;
+  min-width: 500px;
+}
+
+.splash-widget {
+  background: var(--interface);
+  color: var(--primary-text);
+  border-radius: 24px;
+  color: var(--bg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 32px;
+}
+
+.splash-widget-rightlong {
+  width: 45%;
+  min-width: 340px;
+}
+
+.splash-logo {
+  max-width: 180px;
+  width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.social-widget-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.social-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.social-row span {
+  font-size: 1rem;
+  color: #ccc;
+  white-space: nowrap;
+}
+
+.social-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #222;
+  color: #FFFFFC;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.social-btn.twitter:hover { background: #1da1f2; color: #FFFFFC; }
+.social-btn.discord:hover { background: #5865F2; color: #FFFFFC; }
+.social-btn.github:hover  { background: #333; color: #FFFFFC; }
+.social-btn.instagram:hover { background: #e1306c; color: #FFFFFC; }
+.social-btn.dmu:hover { background: #ff0000; color: #FFFFFC; }
+.social-btn.dsu:hover { background: #ff8800; color: #FFFFFC; }
+.social-btn.linkedin:hover { background: #0077b5; color: #FFFFFC; }
+
+.link-text {
+    transition: color 0.2s;
+}
+
+a:hover .link-text {
+    color: var(--accent); /* Match your navbar hover color */
+    text-decoration: underline; /* Optional */
+}
+
+/* ========================================================================== 
+4. Footer
+========================================================================== */
+footer {
+  background: var(--interface);
+  color: var(--primary-text);
+  padding: 20px 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  line-height: 2.5;
+}
+.footer-links li {
+  display: inline;
+  margin-right: 15px;
+}
+.footer-links li a {
+  color: var(--primary-text);
+  transition: color 0.3s;
+}
+.footer-links li a:hover {
+  color: var(--accent);
+}
+.copyright {
+  text-align: right;
+}
+.copyright p {
+  color: var(--bg);
+  margin: 0;
+}
+
+footer, .copyright p {
+  background: var(--interface) !important;
+  color: var(--primary-text) !important;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 991.98px) {
+  .splash-widgets-3col {
+    flex-direction: column;
+    align-items: center;
+  }
+  .splash-widget-rightlong {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* ========================================================================== 
+5. Hero Area
+========================================================================== */
+header#hero-area {
+  min-height: 100vh;
+  width: 100%;
+  /*background: url(../img/site-content/bg25-empty.png) fixed no-repeat;*/
+  background-size: cover;
+  color: var(--bg);
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 48px;
+}
+
+/* ========================================================================== 
+6. P2P section
+========================================================================== */
+
+#P2P .section-header {
+  margin-top: 0 !important;
+  margin-bottom: 0rem !important;
+}
+
+#P2P .section-title {
+  color: var(--primary-text);
+}
+
+#P2P .section-subtitle {
+  color: var(--secondary-text);
+}
+
+/* P2P button style */
+.p2p-btn {
+  background-color: var(--interface);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.p2p-btn:hover,
+.p2p-btn:focus {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+/* ========================================================================== 
+7. About Us Section
+========================================================================== */
+#about-us {
+  background-size: cover;
+  background-color: var(--bg);
+  color: var(--primary-text);
+  overflow: hidden;
+  position: relative;
+}
+
+/* About the Society section card background */
+#about-us .card {
+  background: var(--interface) !important;
+  color: var(--primary-text) !important;
+}
+
+#about-us .card .card-title,
+#about-us .card .card-text,
+#about-us .card .icon {
+  color: var(--primary-text) !important;
+}
+
+/* ========================================================================== 
+8. Committee Section
+ ========================================================================== */
+
+#committee {
+  background-size: cover;
+  color: var(--secondary-text);
+  overflow: hidden;
+  position: relative;
+}
+
+#committee .section-title,
+#committee .section-subtitle {
+  color: var(--secondary-text);
+}
+
+/* Make the entire committee card bigger */
+.committee-card {
+  width: 100%;
+  max-width: 48rem;         /* 768px = 48rem */
+  min-height: 22rem;        /* 352px = 22rem */
+  height: 22rem;
+  background: var(--interface);
+  border-radius: 1.5rem;    /* 24px = 1.5rem */
+  box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.10); /* 8px 32px */
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  margin: 2rem auto;
+}
+
+.committee-img-wrapper {
+  flex: 0 0 22rem;          /* 352px = 22rem */
+  height: 22rem;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: var(--interface);
+}
+
+.committee-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem 0 0 1.5rem;
+  display: block;
+}
+
+.committee-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  background: var(--interface);
+  border-radius: 0 1.5rem 1.5rem 0;
+  text-align: center;
+  color: var(--primary-text);
+}
+
+.committee-info .social-list .linkedin a {
+  background: #FFFFFC !important;
+  color: #1a7dff !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-top: 0px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.committee-info .social-list .linkedin a:hover {
+  background: #FFFFFC !important;
+  color: #CD4631 !important;
+}
+
+/* Carousel Prev/Next Button - Always dark, arrow centered, using Font Awesome icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none !important;
+  background-color: var(--interface) !important;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  position: relative;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+  content: '';
+  display: none; /* Hide default arrow */
+}
+
+/* Use Font Awesome icons for carousel controls */
+.carousel-control-prev .carousel-control-prev-icon {
+  background-color: #222 !important;
+}
+
+.carousel-control-prev .carousel-control-prev-icon::before {
+  content: "\f060"; /* Font Awesome fa-arrow-left */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 2rem;
+  color: #fff;
+  display: block;
+}
+
+.carousel-control-next .carousel-control-next-icon {
+  background-color: #222 !important;
+}
+
+.carousel-control-next .carousel-control-next-icon::before {
+  content: "\f061"; /* Font Awesome fa-arrow-right */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 2rem;
+  color: #fff;
+  display: block;
+}
+
+/* Other (Gallery) Section Full Height/Width */
+#other .container {
+  width: 100%;
+}
+
+#other .gallery-icon {
+  font-size: 4rem;
+}
+
+#other .gallery-label {
+  margin-top: 0rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.gallery-btn {
+  background: var(--interface);
+  border: none;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-bottom: 0rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.gallery-btn:focus,
+.gallery-btn:hover {
+  background: #2B3D41;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.gallery-btn .gallery-icon {
+  font-size: 2.5rem;
+  color: #CD4631;
+}
+
+.gallery-btn:nth-of-type(2) .gallery-icon {
+  color: #d63384;
+}
+
+/* ========================================================================== 
+9. Facilities Section Style
+   ========================================================================== */
+
+/* Facilities section card background */
+#facilities .card {
+  background: var(--interface) !important;
+  color: var(--primary-text) !important;
+}
+
+#facilities .card .card-title,
+#facilities .card .card-text,
+#facilities .card .icon {
+  color: var(--primary-text) !important;
+}
+
+/* ========================================================================== 
+  10. Gallery Section Styles 
+========================================================================== */
+
+.gallery-splash-header {
+  padding-top: 80px;
+  padding-bottom: 0;
+  background: url('../img/site-content/bg25-empty.png') center center/cover no-repeat, #2B3D41;
+  min-height: 420px;
+  position: relative;
+}
+.gallery-splash-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(43,61,65,0.65); /* dark overlay for readability */
+  z-index: 1;
+}
+.gallery-splash-widget {
+  position: relative;
+  z-index: 2;
+  background: #FFFFFC;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin-top: 40px;
+  margin-bottom: 0;
+  max-width: 500px;
+  width: 100%;
+  color: #000000;
+}
+
+/* ========================================================================== 
+  11. Sidebar
+========================================================================== */
+
+.sidebar-widget {
+  position: fixed;
+  top: 70px; /* Height of navbar */
+  left: 0;
+  height: calc(100vh - 70px); /* Fill the rest of the viewport */
+  width: 110px; /* Or whatever width you want */
+  background: #2B3D41;
+  box-shadow: 2px 0 16px rgba(0,0,0,0.08);
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.sidebar-stepper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.stepper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.stepper-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.2s;
+}
+
+.stepper-link:last-child {
+  margin-bottom: 0;
+}
+
+.stepper-circle {
+  width: 36px;
+  height: 36px;
+  background: #2B3D41;
+  border: 3px solid #CD4631;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent);
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.stepper-link.active .stepper-circle,
+.stepper-link:hover .stepper-circle {
+  background: var(--accent);
+  color: #fff;
+  border-color: #fff;
+}
+
+.stepper-label {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #fff;
+  text-align: center;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.stepper-link.active .stepper-label,
+.stepper-link:hover .stepper-label {
+  color: var(--accent);
+}
+
+/* ========================================================================== 
+  12. Responsive Tweaks
+========================================================================== */ 
+@media (max-width: 767.98px) {
+  .sidebar-widget {
+    display: none !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  footer {
+    padding-left: 180px; /* Add left padding to footer on desktop */
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #181c1f;
+    --interface: #23292b;
+    --primary-text: #f5f5f5;
+    --accent: #ff7b5c;
+    --secondary-text: #e0e0e0;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--secondary-text);
+  }
+
+  .splash-widget,
+  .sidebar-widget,
+  footer,
+  .universal-navbar {
+    background: var(--interface) !important;
+    color: var(--primary-text) !important;
+  }
+
+  .splash-widget,
+  .splash-widget-rightlong,
+  .splash-widget-topleft,
+  .splash-widget-bottomleft {
+    background: var(--interface) !important;
+    color: var(--primary-text) !important;
+  }
+
+  .stepper-link,
+  .stepper-label {
+    color: var(--primary-text) !important;
+  }
+
+  .stepper-circle {
+    background: var(--interface) !important;
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+  }
+
+  .stepper-link.active .stepper-circle,
+  .stepper-link:hover .stepper-circle {
+    background: var(--accent) !important;
+    color: var(--primary-text) !important;
+    border-color: var(--primary-text) !important;
+  }
+
+  .stepper-link.active .stepper-label,
+  .stepper-link:hover .stepper-label {
+    color: var(--accent) !important;
+  }
+
+  .link-text,
+  .footer-links li a {
+    color: var(--primary-text);
+  }
+
+  .link-text:hover,
+  .footer-links li a:hover {
+    color: var(--accent);
+  }
+}
