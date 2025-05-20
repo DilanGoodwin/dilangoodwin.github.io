@@ -24,7 +24,19 @@ jobs:
       - name: Run Generator Script
         run: python3 ./.github/scripts/imgListGenerator.py
       
+      - name: Check Changes
+        id: check_changes
+        run: |
+          if [[ -n "$(git diff --exit-code)" ]]; then
+            echo "Changes detected."
+            echo "::set-output name=has_changes::true"
+          else
+            echo "No changes detected."
+            echo "::set-output name=has_changes::false"
+          fi
+
       - name: Push Changes
+        if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           git config --global user.name "${{github.actor}}"
           git config --global user.email "${{github.actor}}@users.noreply.github.com"
