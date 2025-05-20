@@ -25,7 +25,7 @@ jobs:
         run: python3 ./.github/scripts/imgListGenerator.py
       
       - name: Check Changes
-        id: changes_made
+        id: check_changes
         run: |
           if [[ -n "$(git diff --exit-code)" ]]; then
             echo "Changes detected."
@@ -36,7 +36,7 @@ jobs:
           fi
 
       - name: Push Changes
-        if: steps.changes_made.outputs.has_changes == 'true'
+        if: steps.check_changes.outputs.has_changes == 'true'
         run: |
           git config --global user.name "${{github.actor}}"
           git config --global user.email "${{github.actor}}@users.noreply.github.com"
@@ -47,6 +47,7 @@ jobs:
 
   # Page Deployment Job
   deploy:
+    needs: build 
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
