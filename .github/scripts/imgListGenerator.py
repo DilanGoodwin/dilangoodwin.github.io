@@ -16,3 +16,4 @@ print(retrievedFileList)
 output_path = 'img/gallery/GalleryList.json'
 with open(output_path, 'w') as f:
     json.dump(retrievedFileList, f, indent=2)
+    f.close
