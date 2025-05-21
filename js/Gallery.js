@@ -15,7 +15,7 @@ async function fetchImagesFromFolder(folderPath) {
 function applyMasonry(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
-    
+
     const images = container.getElementsByTagName('img');
 
     let loadedCount = 0;

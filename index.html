@@ -49,7 +49,6 @@
       <!-- Navigation Bar -->
       <nav class="navbar navbar-expand-lg navbar fixed-top universal-navbar">
         <div class="container justify-content-end">
-          <!-- a class="navbar-brand text-white" href="index.html">DMU Hacking Society</a> -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
             aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -76,7 +75,7 @@
         <div class="splash-widgets-3col">
           <div class="splash-widgets-leftcol">
             <div class="splash-widget splash-widget-topleft">
-              <h2>Welcome to DMU Hacking Society</h2>
+              <h2 class="section-title">Welcome to DMU Hacking Society</h2>
             </div>
             <div class="splash-widget splash-widget-bottomleft">
               <img src="img/site-content/logo.png" alt="DMU Hackers Logo" class="splash-logo">
@@ -152,7 +151,7 @@
     <section id="P2P" class="section">
       <div class="container">
         <div class="section-header">
-          <img id="p2p-section-img" src="img/pwn2play/P2P-first-blood.png" alt="Pwn2Play Logo"
+          <img id="p2p-section-img" src="img/pwn2play/P2P_FirstBlood.png" alt="Pwn2Play Logo"
             style="max-width:300px; margin-bottom:24px; display:block; margin-left:auto; margin-right:auto;">
           <h2 class="section-title">Pwn2Play</h2>
           <hr class="lines">
@@ -215,14 +214,14 @@
                     <span class="me-3 fs-2 text-primary-custom">
                       <i class="fas fa-map-marker-alt"></i>
                     </span>
-                    <span class="fs-5 text-light">Gateway House 5.53</span>
+                    <span class="fs-5">Gateway House 5.53</span>
                   </div>
                   <div
                     class="d-flex align-items-center justify-content-center mini-info-card px-4 py-3 bg-secondary-custom rounded-4 min-width-220">
                     <span class="me-3 fs-2 text-primary-custom">
                       <i class="fas fa-clock"></i>
                     </span>
-                    <span class="fs-5 text-light">Thursday at 18:00</span>
+                    <span class="fs-5">Thursday at 18:00</span>
                   </div>
                 </div>
               </div>
@@ -482,24 +481,6 @@
   <!-- JS Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/sidebar.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const img = document.getElementById('p2p-section-img');
-      if (!img) return;
-
-      function updateImage() {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          img.src = 'img/pwn2play/P2Pbg.png';
-        } else {
-          img.src = 'img/pwn2play/P2P-first-blood.png';
-        }
-      }
-
-      updateImage();
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateImage);
-    });
-  </script>
-  <!-- JS Scripts End -->
 </body>
 
 </html>

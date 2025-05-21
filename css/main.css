@@ -22,11 +22,11 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,700");
 
 :root {
-  --bg: #FFFFFC;
-  --interface: #2B3D41;
-  --primary-text: #FFFFFC;
-  --accent: #CD4631;
-  --secondary-text: #333;
+  --bg: #DFD0B8;
+  --interface: #948979;
+  --primary-text: #222831;
+  --accent: #940d2d;
+  --secondary-text: #393E46;
 }
 
 /* ==========================================================================
@@ -59,6 +59,7 @@ header#hero-area,
   margin-bottom: 2rem !important;
   text-align: center;
 }
+
 .section-title {
   font-size: 2rem;
   color: var(--secondary-text);
@@ -66,19 +67,21 @@ header#hero-area,
   font-weight: 700;
   margin-top: 0;
 }
+
 .section-subtitle {
   color: var(--secondary-text);
   font-size: 1rem;
   font-weight: 400;
 }
+
 .section-header .lines {
   margin: 16px auto;
   width: 70px;
   border-top: 2px solid var(--interface);
 }
 
-section > .container,
-#other > .container {
+section>.container,
+#other>.container {
   margin: 0 !important;
   padding: 0 !important;
   width: 100%;
@@ -90,7 +93,11 @@ body {
   background: var(--bg);
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
@@ -101,7 +108,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
-a:hover, a:focus {
+
+a:hover,
+a:focus {
   color: #969696;
   text-decoration: none;
   outline: none;
@@ -115,7 +124,7 @@ a:hover, a:focus {
   opacity: 1;
 }
 
-.main-content > .container:first-of-type {
+.main-content>.container:first-of-type {
   margin-top: 70px;
 }
 
@@ -130,7 +139,7 @@ a:hover, a:focus {
 .universal-navbar {
   background-color: var(--interface) !important;
   color: var(--primary-text) !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   min-height: 70px;
 }
 
@@ -162,6 +171,7 @@ a:hover, a:focus {
 .universal-navbar .nav-link:hover {
   color: var(--accent) !important;
 }
+
 /* ========================================================================== 
 3. Splash Widgets #hero-area
 ========================================================================== */
@@ -188,8 +198,8 @@ a:hover, a:focus {
   background: var(--interface);
   color: var(--primary-text);
   border-radius: 24px;
-  color: var(--bg);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  /* color: var(--bg); */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -233,8 +243,9 @@ a:hover, a:focus {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #222;
-  color: #FFFFFC;
+  background: var(--primary-text);
+  color: var(--interface);
+  ;
   font-size: 1.7rem;
   display: flex;
   align-items: center;
@@ -242,21 +253,52 @@ a:hover, a:focus {
   text-decoration: none;
   transition: background 0.2s, color 0.2s;
 }
-.social-btn.twitter:hover { background: #1da1f2; color: #FFFFFC; }
-.social-btn.discord:hover { background: #5865F2; color: #FFFFFC; }
-.social-btn.github:hover  { background: #333; color: #FFFFFC; }
-.social-btn.instagram:hover { background: #e1306c; color: #FFFFFC; }
-.social-btn.dmu:hover { background: #ff0000; color: #FFFFFC; }
-.social-btn.dsu:hover { background: #ff8800; color: #FFFFFC; }
-.social-btn.linkedin:hover { background: #0077b5; color: #FFFFFC; }
+
+.social-btn.twitter:hover {
+  background: #1da1f2;
+  color: #FFFFFC;
+}
+
+.social-btn.discord:hover {
+  background: #5865F2;
+  color: #FFFFFC;
+}
+
+.social-btn.github:hover {
+  background: #333;
+  color: #FFFFFC;
+}
+
+.social-btn.instagram:hover {
+  background: #e1306c;
+  color: #FFFFFC;
+}
+
+.social-btn.dmu:hover {
+  background: #ff0000;
+  color: #FFFFFC;
+}
+
+.social-btn.dsu:hover {
+  background: #ff8800;
+  color: #FFFFFC;
+}
+
+.social-btn.linkedin:hover {
+  background: #0077b5;
+  color: #FFFFFC;
+}
 
 .link-text {
-    transition: color 0.2s;
+  transition: color 0.2s;
+  color: var(--primary-text);
 }
 
 a:hover .link-text {
-    color: var(--accent); /* Match your navbar hover color */
-    text-decoration: underline; /* Optional */
+  color: var(--accent);
+  /* Match your navbar hover color */
+  text-decoration: underline;
+  /* Optional */
 }
 
 /* ========================================================================== 
@@ -274,26 +316,32 @@ footer {
   margin: 0;
   line-height: 2.5;
 }
+
 .footer-links li {
   display: inline;
   margin-right: 15px;
 }
+
 .footer-links li a {
   color: var(--primary-text);
   transition: color 0.3s;
 }
+
 .footer-links li a:hover {
   color: var(--accent);
 }
+
 .copyright {
   text-align: right;
 }
+
 .copyright p {
   color: var(--bg);
   margin: 0;
 }
 
-footer, .copyright p {
+footer,
+.copyright p {
   background: var(--interface) !important;
   color: var(--primary-text) !important;
   transition: background 0.2s, color 0.2s;
@@ -305,6 +353,7 @@ footer, .copyright p {
     flex-direction: column;
     align-items: center;
   }
+
   .splash-widget-rightlong {
     width: 100%;
     min-width: unset;
@@ -403,12 +452,16 @@ header#hero-area {
 /* Make the entire committee card bigger */
 .committee-card {
   width: 100%;
-  max-width: 48rem;         /* 768px = 48rem */
-  min-height: 22rem;        /* 352px = 22rem */
+  max-width: 48rem;
+  /* 768px = 48rem */
+  min-height: 22rem;
+  /* 352px = 22rem */
   height: 22rem;
   background: var(--interface);
-  border-radius: 1.5rem;    /* 24px = 1.5rem */
-  box-shadow: 0 0.5rem 2rem rgba(0,0,0,0.10); /* 8px 32px */
+  border-radius: 1.5rem;
+  /* 24px = 1.5rem */
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.10);
+  /* 8px 32px */
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -416,7 +469,8 @@ header#hero-area {
 }
 
 .committee-img-wrapper {
-  flex: 0 0 22rem;          /* 352px = 22rem */
+  flex: 0 0 22rem;
+  /* 352px = 22rem */
   height: 22rem;
   display: flex;
   align-items: stretch;
@@ -484,7 +538,8 @@ header#hero-area {
 .carousel-control-prev-icon::after,
 .carousel-control-next-icon::after {
   content: '';
-  display: none; /* Hide default arrow */
+  display: none;
+  /* Hide default arrow */
 }
 
 /* Use Font Awesome icons for carousel controls */
@@ -493,7 +548,8 @@ header#hero-area {
 }
 
 .carousel-control-prev .carousel-control-prev-icon::before {
-  content: "\f060"; /* Font Awesome fa-arrow-left */
+  content: "\f060";
+  /* Font Awesome fa-arrow-left */
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   font-size: 2rem;
@@ -506,7 +562,8 @@ header#hero-area {
 }
 
 .carousel-control-next .carousel-control-next-icon::before {
-  content: "\f061"; /* Font Awesome fa-arrow-right */
+  content: "\f061";
+  /* Font Awesome fa-arrow-right */
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   font-size: 2rem;
@@ -539,7 +596,7 @@ header#hero-area {
   align-items: center;
   justify-content: center;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
   margin-bottom: 0rem;
   cursor: pointer;
   outline: none;
@@ -547,13 +604,13 @@ header#hero-area {
 
 .gallery-btn:focus,
 .gallery-btn:hover {
-  background: #2B3D41;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  background: var(--bg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-btn .gallery-icon {
   font-size: 2.5rem;
-  color: #CD4631;
+  color: var(--accent);
 }
 
 .gallery-btn:nth-of-type(2) .gallery-icon {
@@ -587,19 +644,22 @@ header#hero-area {
   min-height: 420px;
   position: relative;
 }
+
 .gallery-splash-header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(43,61,65,0.65); /* dark overlay for readability */
+  background: rgba(43, 61, 65, 0.65);
+  /* dark overlay for readability */
   z-index: 1;
 }
+
 .gallery-splash-widget {
   position: relative;
   z-index: 2;
   background: #FFFFFC;
   border-radius: 24px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
   padding: 2.5rem 2rem 2rem 2rem;
   margin-top: 40px;
   margin-bottom: 0;
@@ -614,12 +674,15 @@ header#hero-area {
 
 .sidebar-widget {
   position: fixed;
-  top: 70px; /* Height of navbar */
+  top: 70px;
+  /* Height of navbar */
   left: 0;
-  height: calc(100vh - 70px); /* Fill the rest of the viewport */
-  width: 110px; /* Or whatever width you want */
-  background: #2B3D41;
-  box-shadow: 2px 0 16px rgba(0,0,0,0.08);
+  height: calc(100vh - 70px);
+  /* Fill the rest of the viewport */
+  width: 110px;
+  /* Or whatever width you want */
+  background: var(--interface);
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.08);
   z-index: 1040;
   display: flex;
   flex-direction: column;
@@ -662,8 +725,8 @@ header#hero-area {
 .stepper-circle {
   width: 36px;
   height: 36px;
-  background: #2B3D41;
-  border: 3px solid #CD4631;
+  background: var(--interface);
+  border: 3px solid var(--accent);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -696,11 +759,12 @@ header#hero-area {
 
 /* ========================================================================== 
   12. Responsive Tweaks
-========================================================================== */ 
+========================================================================== */
 @media (max-width: 767.98px) {
   .sidebar-widget {
     display: none !important;
   }
+
   .main-content {
     margin-left: 0 !important;
   }
@@ -708,17 +772,18 @@ header#hero-area {
 
 @media (min-width: 768px) {
   footer {
-    padding-left: 180px; /* Add left padding to footer on desktop */
+    padding-left: 180px;
+    /* Add left padding to footer on desktop */
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #181c1f;
-    --interface: #23292b;
-    --primary-text: #f5f5f5;
-    --accent: #ff7b5c;
-    --secondary-text: #e0e0e0;
+    --bg: #222831;
+    --interface: #393E46;
+    --primary-text: #DFD0B8;
+    --accent: #940d2d;
+    --secondary-text: #948979;
   }
 
   body {

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Smooth scroll for sidebar links
   links.forEach(link => {
-    link.addEventListener('click', function(e) {
+    link.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href').replace('#', '');
       const target = document.getElementById(targetId);
       if (target) {

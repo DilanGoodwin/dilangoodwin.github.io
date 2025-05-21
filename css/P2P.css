@@ -3,7 +3,7 @@
 -- Content: P2P CSS --
 1. Global Styles
 ============================================== */
-.section > .container {
+.section>.container {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1rem;
@@ -11,11 +11,11 @@
 }
 
 :root {
-  --bg: #FFFFFC;
-  --interface: #2B3D41;
-  --primary-text: #FFFFFC;
-  --accent: #CD4631;
-  --secondary-text: #333;
+  --bg: #DFD0B8;
+  --interface: #948979;
+  --primary-text: #222831;
+  --accent: #940d2d;
+  --secondary-text: #393E46;
 }
 
 /* ============================================= 
@@ -26,15 +26,17 @@
 
 .card {
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   border: none;
   background: var(--bg);
   color: var(--interface);
 }
+
 .event-card {
   background: var(--interface) !important;
   color: var(--primary-text) !important;
 }
+
 .event-info-box {
   background: var(--accent);
   color: var(--bg);
@@ -42,15 +44,18 @@
   margin-bottom: 0.5rem;
   width: 100%;
 }
+
 .event-info-icon {
   font-size: 2rem;
   color: var(--bg);
 }
+
 .connect-card {
   background: var(--interface) !important;
   color: var(--primary-text) !important;
   border: none;
 }
+
 .connect-card .social-btn {
   width: 60px;
   height: 60px;
@@ -59,6 +64,7 @@
   color: var(--bg);
   margin-bottom: 0.5rem;
 }
+
 .connect-card .social-btn:hover {
   background: var(--bg);
   color: var(--primary-text);
@@ -69,6 +75,7 @@
   max-width: 700px;
   margin: 0 auto;
 }
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -76,6 +83,7 @@
   position: relative;
   padding-left: 30px;
 }
+
 .timeline::before {
   content: '';
   position: absolute;
@@ -86,11 +94,13 @@
   background: var(--accent);
   border-radius: 2px;
 }
+
 .timeline-event {
   display: flex;
   align-items: center;
   position: relative;
 }
+
 .timeline-time {
   width: 70px;
   text-align: right;
@@ -99,6 +109,7 @@
   font-size: 1.1rem;
   flex-shrink: 0;
 }
+
 .timeline-dot {
   width: 40px;
   height: 40px;
@@ -111,32 +122,38 @@
   margin: 0 20px;
   font-size: 1.3rem;
   z-index: 1;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
+
 .timeline-content {
   background: var(--interface);
   color: var(--primary-text);
   padding: 1rem 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   font-size: 1.1rem;
   min-width: 120px;
 }
+
 @media (max-width: 600px) {
   .timeline {
     padding-left: 0;
   }
+
   .timeline-event {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .timeline-time {
     text-align: left;
     margin-bottom: 0.5rem;
   }
+
   .timeline-dot {
     margin: 0 0 0.5rem 0;
   }
+
   .timeline-content {
     min-width: 0;
     width: 100%;
@@ -145,11 +162,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #181c1f;
-    --interface: #23292b;
-    --primary-text: #f5f5f5;
-    --accent: #ff7b5c;
-    --secondary-text: #e0e0e0;
+    --bg: #222831;
+    --interface: #393E46;
+    --primary-text: #DFD0B8;
+    --accent: #940d2d;
+    --secondary-text: #948979;
   }
 
   body {
@@ -240,4 +257,3 @@
   border-radius: 50%;
   font-size: 2rem;
 }
-
