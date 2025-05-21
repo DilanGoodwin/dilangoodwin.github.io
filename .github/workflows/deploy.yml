@@ -10,9 +10,9 @@ permissions:
   pages: write
   id-token: write
 
-# concurrency:
-#   group: "pages"
-#   cancel-in-progress: false
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   # Page Build Job
@@ -21,10 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run Generator Script
+      - name: Run Img Generator Script
         run: python3 ./.github/scripts/imgListGenerator.py
       
-      - name: Check Changes
+      - name: Check For Changes
         id: check_changes
         run: |
           if [[ -n "$(git diff --exit-code)" ]]; then
@@ -53,11 +53,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
