@@ -1,16 +1,11 @@
 .committee-accordion-shadow {
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.28), 0 1.5px 6px 0 rgba(0, 0, 0, 0.12);
   border-radius: 16px;
-  border: 1px solid rgba(44, 62, 80, 0.08);
-  /* optional, for extra pop */
 }
 
 .accordion-theme {
   background: var(--interface);
   color: var(--primary-text);
   border-radius: 16px;
-  border: 1px solid rgba(44, 62, 80, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.28), 0 1.5px 6px 0 rgba(0, 0, 0, 0.12);
   transition: background 0.2s, color 0.2s;
 }
 
